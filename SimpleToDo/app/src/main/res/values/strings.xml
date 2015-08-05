@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SimpleToDo</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_edit_item">Edit Item</string>
+    <string name="edit_selected_item">Edit Selected Item :</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="add_item">Add Item</string>
+</resources>
