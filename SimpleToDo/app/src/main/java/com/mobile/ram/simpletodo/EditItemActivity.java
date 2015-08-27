@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.mobile.ram.simpletodo.model.TodoItem;
+
 /**
  * Created by Ram on 7/13/15.
  * This class to edit selected Item
@@ -17,6 +19,9 @@ import android.widget.EditText;
 public class EditItemActivity extends AppCompatActivity {
 
     private EditText etEditItem;
+
+
+    private TodoItem selectedTodoItem;
     private int itemPosition;
 
 
@@ -25,11 +30,17 @@ public class EditItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
         // Get Selected item from TDOList
-        String itemSelected= getIntent().getStringExtra("item");
-        itemPosition=getIntent().getIntExtra("itemPosition",0);
+
+
+        selectedTodoItem = (TodoItem) getIntent().getSerializableExtra("selectedTodoItem");
+        itemPosition = getIntent().getIntExtra("itemPosition", 0);
+
+
         // Show Selected item in text box
-        etEditItem= (EditText) findViewById(R.id.etEditItem);
-        etEditItem.setText(itemSelected);
+        etEditItem = (EditText) findViewById(R.id.etEditItem);
+
+
+        etEditItem.setText(selectedTodoItem.getItem());
 
 
     }
@@ -55,25 +66,37 @@ public class EditItemActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-     /*
-        To handle Cancel button on click event
-      */
+
+    /*
+       To handle Cancel button on click event
+     */
     public void onCancelItem(View view) {
         // closes the activity and returns to first screen
         this.finish();
 
     }
+
     /*
        To handle Save button on click event
      */
     public void onSaveItem(@SuppressWarnings("UnusedParameters") View view) {
-        etEditItem= (EditText) findViewById(R.id.etEditItem);
-           Intent data = new Intent();
-            data.putExtra("item", etEditItem.getText().toString());
-            data.putExtra("itemPosition", itemPosition);
-            data.putExtra("code", 200);
-            setResult(RESULT_OK, data);
-            this.finish();
+
+
+        etEditItem = (EditText) findViewById(R.id.etEditItem);
+        selectedTodoItem.setItem(etEditItem.getText().toString());
+
+        Intent data = new Intent();
+
+        data.putExtra("selectedTodoItem", selectedTodoItem);
+
+        data.putExtra("itemPosition", itemPosition);
+
+        data.putExtra("code", 200);
+
+        setResult(RESULT_OK, data);
+
+
+        this.finish();
 
     }
 }

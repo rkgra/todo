@@ -7,4 +7,7 @@
     <string name="save_button">Save</string>
     <string name="cancel_button">Cancel</string>
     <string name="add_item">Add Item</string>
+    <string name="tv_ID">ID</string>
+    <string name="tv_Item">Item</string>
+    <string name="tv_DueDate">DueDate</string>
 </resources>
