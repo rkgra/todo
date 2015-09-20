@@ -14,7 +14,7 @@
         android:layout_height="46dp"
         android:text="@string/tv_Item"
         android:id="@+id/tvItem"
-        android:layout_weight="0.18"
+        android:layout_weight="0.03"
         android:textAlignment="center" />
 
 </LinearLayout>
